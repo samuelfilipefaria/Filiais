@@ -15,14 +15,14 @@
 	    
      <h:form>
        <p:menubar>
-         <p:menuitem>
+         <p:menuitem action="index?faces-redirect=true">
          	<i class="fa-solid fa-house"></i>
          </p:menuitem>
          <p:submenu label="Gerenciamento">
-           <p:menuitem value="Filiais"/>
-           <p:menuitem value="Funcionários"/>
+           <p:menuitem value="Filiais" action="filials?faces-redirect=true"/>
+           <p:menuitem value="Funcionários" action="employers?faces-redirect=true"/>
          </p:submenu>
-         <p:menuitem value="Relatórios"/>
+         <p:menuitem value="Relatórios" action="reports?faces-redirect=true"/>
        </p:menubar>
      </h:form>
 	    
