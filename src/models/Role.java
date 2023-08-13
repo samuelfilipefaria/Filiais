@@ -1,19 +1,20 @@
 package models;
 
 public enum Role {
-	NORMAL("normal"), COORDINATOR("coordinator"), MANAGER("manager");
+	NORMAL(1), COORDINATOR(2), MANAGER(3);
 	
-	private String role;
+	private int role;
 	
-	Role(String role) {
+	Role(int role) {
 		this.role = role;
 	}
 
-	public String getRole() {
+	public int getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(int role) {
 		this.role = role;
 	}
+
 }
