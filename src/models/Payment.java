@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Payment {
@@ -17,9 +16,6 @@ public class Payment {
 	private Date date; 
 	private Integer month;
 	private Integer year;
-	
-	@ManyToOne
-	private Employee employee;
 	
 	public Double getPaymentTotal() {
 		return 0.0;
@@ -70,13 +66,5 @@ public class Payment {
 
 	public void setYear(Integer year) {
 		this.year = year;
-	}
-
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
 	}
 }

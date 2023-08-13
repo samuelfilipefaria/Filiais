@@ -27,7 +27,7 @@ public class Employee {
 	@ManyToOne
 	private Filial filial;
 	
-	@OneToMany(mappedBy = "employee", cascade = {CascadeType.REMOVE})
+	@OneToMany
 	private List<Payment> payments = new ArrayList<Payment>();
 	
 	private Role role;
