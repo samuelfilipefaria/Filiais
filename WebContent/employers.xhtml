@@ -18,7 +18,18 @@
 		/>
 		
 		<h:form id="formDialog">
-			<p:dialog widgetVar="employeeFormDialog" modal="true" width="1000px" height="400px" closeOnEscape="true" position="right" responsive="true" resizable="false" styleClass="animate__animated animate__bounceIn form-dialog">
+			<p:dialog
+				widgetVar="employeeFormDialog" 
+				modal="true" 
+				width="1000px" 
+				height="400px" 
+				closeOnEscape="true" 
+				position="right" 
+				responsive="true" 
+				resizable="false" 
+				draggable="false"
+				styleClass="animate__animated animate__bounceIn form-dialog"
+			>
 				<h1 class="dialog-title">Cadastro/edição de funcionário(a)</h1>
 				<p:inputText placeholder="Nome" required="true"/> <br/><br/>
 				<p:inputNumber placeholder="Idade" required="true" styleClass="age-input"/> <br/><br/>
