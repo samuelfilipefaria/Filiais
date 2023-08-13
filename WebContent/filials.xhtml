@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
@@ -11,7 +11,43 @@
 	</ui:define>
 
 	<ui:define name="content">
-		
+		<p:commandButton
+			value=""
+			oncomplete="PF('filialFormDialog').show()"
+			styleClass="add-button fa-solid fa-plus animate__animated animate__fadeInRight"
+		/>
+
+		<p:dialog
+			widgetVar="filialFormDialog"
+			modal="true"
+			width="1000px"
+			height="400px"
+			closeOnEscape="true"
+			position="right"
+			responsive="true"
+			resizable="false"
+			draggable="false"
+			styleClass="animate__animated animate__bounceIn form-dialog"
+		>
+				<h1 class="dialog-title">Cadastro/edição de filial</h1>
+
+				<h:form id="formDialog">
+					<p:messages id="messages" closable="true">
+			        <p:autoUpdate />
+			    </p:messages>
+
+					<p:inputText id="name" value="#{filialBean.filial.name}" placeholder="Nome" required="true" requiredMessage="Nome inválido!"/> <p:message for="name" /> <br/><br/>
+					<p:inputMask id="cnpj" value="#{filialBean.filial.cnpj}" placeholder="CNPJ" mask="99.999.999/9999-99" required="true" requiredMessage="CNPJ inválido!"/> <p:message for="cnpj"/> <br/><br/>
+
+					<p:inputText id="street" value="#{filialBean.address.street}" placeholder="Rua" required="true" requiredMessage="Rua inválida!"/> <p:message for="street"/> <br/><br/>
+					<p:inputNumber id="number" value="#{filialBean.address.number}" placeholder="Número" padControl="false" required="true" requiredMessage="Número inválido!"/> <p:message for="street"/> <br/><br/>
+					<p:inputText id="neighborhood" value="#{filialBean.address.neighborhood}" placeholder="Bairro" required="true" requiredMessage="Bairro inválido!"/> <p:message for="neighborhood"/> <br/><br/>
+					<p:inputText id="city" value="#{filialBean.address.city}" placeholder="Cidade" required="true" requiredMessage="Cidade inválida!"/> <p:message for="city"/> <br/><br/>
+					<p:inputMask id="postalCode" value="#{filialBean.address.postalCode}" placeholder="CEP" mask="99999-999" required="true" requiredMessage="CEP inválido!"/> <p:message for="postalCode"/> <br/><br/>
+
+					<p:commandButton action="#{filialBean.save()}" value="Enviar"/>
+				</h:form>
+			</p:dialog>
 	</ui:define>
 </ui:composition>
 </html>

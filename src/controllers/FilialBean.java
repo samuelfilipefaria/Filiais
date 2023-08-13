@@ -2,12 +2,12 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
+import javax.faces.context.FacesContext;
 import models.Address;
 import models.Employee;
 import models.Filial;
@@ -25,66 +25,84 @@ public class FilialBean {
 	private AddressService addressService;
 	@EJB
 	private EmployeeService employeeService;
-	
+
 	private Filial filial = new Filial();
 	private List<Filial> filials = new ArrayList<Filial>();
-	private Address filialAddress = new Address();
+	private Address address = new Address();
 	private String searchTerm;
 	private String noResultsMessage = "";
-	
+
+	public Boolean isStringInputValid(String input) {
+		if(input.trim().isEmpty()) return false;
+
+		return true;
+	}
+
 	public Integer employersQuantity(Filial filial) {
 		return employeeService.filialEmployersQuantity(filial.getId());
 	}
-	
+
 	public void searchFilial() {
 		filials = filialService.listByName(searchTerm);
-		
+
 		searchTerm = "";
-		
+
 		if(filials.size() == 0) {
 			noResultsMessage = "Nenhuma filial encontrada";
 		}
 	}
-	
+
 	public void deleteFilial(Filial filial) {
 		for(Employee employee : employeeService.filialEmployers(filial.getId())) {
 			employeeService.remove(employee);
 		}
-		
+
 		filialService.remove(filial);
 		loadFilials();
 	}
-	
+
 	public void loadFilialData(Filial filial) {
 		this.filial = filial;
-		this.filialAddress = filial.getAddress();
+		this.address = filial.getAddress();
 	}
+
+	public void save() {
+		
+		if(
+		  isStringInputValid(filial.getName()) &&
+		  isStringInputValid(address.getStreet()) &&
+		  isStringInputValid(address.getNeighborhood()) &&
+		  isStringInputValid(address.getCity())
+		) {
+	        if (filial.getId() != null) {
+	          addressService.merge(address);
+	          filial.setAddress(address);
+	          filialService.merge(filial);
+	          FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Editado com sucesso!", ""));
+	        } else {
+	          addressService.create(address);
+	          filial.setAddress(addressService.getAll().get(addressService.getAll().size() - 1));
+	          filialService.create(filial);
+	          FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Criado com sucesso!", ""));
+	        }
 	
-	public void save() {		
-		if (filial.getId() != null) {
-			addressService.merge(filialAddress);
-			filial.setAddress(filialAddress);
-			filialService.merge(filial);
-		} else {
-			addressService.create(filialAddress);
-			filial.setAddress(addressService.getAll().get(addressService.getAll().size() - 1));
-			filialService.create(filial);
-		}
-						
-		filial = new Filial();
-		filialAddress = new Address();
-		loadFilials();
+	        filial = new Filial();
+	        address = new Address();
+	        loadFilials();
+	      } else {
+	    	  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atenção! Você possui campos com valores inválidos.", ""));
+	      }
 	}
-	
+
 	@PostConstruct
 	public void initialize() {
 		loadFilials();
 	}
-	
+
 	public void loadFilials() {
 		filials = filialService.listByName("");
 	}
-	
+
 	public FilialService getFilialService() {
 		return filialService;
 	}
@@ -117,12 +135,12 @@ public class FilialBean {
 		this.searchTerm = searchTerm;
 	}
 
-	public Address getFilialAddress() {
-		return filialAddress;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setFilialAddress(Address filialAddress) {
-		this.filialAddress = filialAddress;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public String getNoResultsMessage() {
