@@ -20,6 +20,46 @@
 	text-align: center;
 }
 
+.dialog-title {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	font-size: 20px;
+	text-align: center;
+}
+
 .page-content {
 
+}
+
+.add-button {
+	position:fixed;
+	bottom:40px;
+	right:40px;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	text-align: center;
+	padding-top: 12px;
+	font-size: 45px;
+	box-shadow:
+  2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+  6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+  22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+  41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+  100px 100px 80px rgba(0, 0, 0, 0.07)
+;
+}
+
+.form-dialog {
+	text-align: center;
+	border-radius: 10px;
+	box-shadow:
+  2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+  6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+  22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+  41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+  100px 100px 80px rgba(0, 0, 0, 0.07)
+;
 }

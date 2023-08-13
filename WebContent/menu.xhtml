@@ -8,13 +8,14 @@
 	<h:head>
 		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/style.css" />
 		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	</h:head>
 	
 	<body>
 	  <div class="container">
 	    
      <h:form>
-       <p:menubar>
+       <p:menubar styleClass="animate__animated animate__fadeInDown">
          <p:menuitem action="index?faces-redirect=true">
          	<i class="fa-solid fa-house"></i>
          </p:menuitem>
@@ -26,10 +27,11 @@
        </p:menubar>
      </h:form>
 	    
-	    
-	    <div class="page-title">
-	    	<ui:insert name="title"></ui:insert>
-	   	</div>
+	    <h1 class="animate__animated animate__zoomIn page-title">
+		  	<ui:insert name="title">
+		  	</ui:insert>
+	  	</h1>
+	  
 	
 	    <div class="page-content">
 	    	<ui:insert name="content"></ui:insert>
