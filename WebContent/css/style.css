@@ -1,0 +1,25 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+	font-family: 'Roboto', sans-serif;
+}
+
+.container {
+	
+}
+
+.ui-menubar {
+ 	border: none;
+}
+
+.page-title {
+	margin-top: 20px;
+	margin-bottom: 50px;
+	font-size: 25px;
+	text-align: center;
+}
+
+.page-content {
+
+}
