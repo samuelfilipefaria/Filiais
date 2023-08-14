@@ -4,40 +4,50 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-	
+
 	<h:head>
 		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/style.css" />
 		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	</h:head>
-	
+
 	<body>
 	  <div class="container">
-	    
+
      <h:form>
-       <p:menubar styleClass="animate__animated animate__fadeInDown">
-         <p:menuitem action="index?faces-redirect=true">
-         	<i class="fa-solid fa-house"></i>
+       <p:menubar styleClass="animate__animated animate__fadeInDown menu">
+         <p:menuitem action="index?faces-redirect=true" id="homeOption" styleClass="menu-option">
+           <i class="fa-solid fa-house"></i>
+           <p:tooltip for="homeOption" value="Início" position="bottom"/>
          </p:menuitem>
-         <p:submenu label="Gerenciamento">
-           <p:menuitem value="Filiais" action="filials?faces-redirect=true"/>
-           <p:menuitem value="Funcionários" action="employers?faces-redirect=true"/>
-         </p:submenu>
-         <p:menuitem value="Relatórios" action="reports?faces-redirect=true"/>
+
+         <p:menuitem action="filials?faces-redirect=true" id="filialsOption" styleClass="menu-option">
+           <i class="fa-solid fa-building"></i>
+           <p:tooltip for="filialsOption" value="Filiais" position="bottom"/>
+         </p:menuitem>
+
+         <p:menuitem action="employers?faces-redirect=true" id="employeeOption" styleClass="menu-option">
+           <i class="fa-solid fa-user"></i>
+           <p:tooltip for="employeeOption" value="Funcionários" position="bottom"/>
+         </p:menuitem>
+
+         <p:menuitem action="reports?faces-redirect=true" id="reportsOption" styleClass="menu-option">
+           <i class="fa-solid fa-newspaper"></i>
+           <p:tooltip for="reportsOption" value="Relatórios" position="bottom"/>
+         </p:menuitem>
        </p:menubar>
      </h:form>
-	    
+
 	    <h1 class="animate__animated animate__zoomIn page-title">
 		  	<ui:insert name="title">
 		  	</ui:insert>
 	  	</h1>
-	  
-	
+
 	    <div class="page-content">
 	    	<ui:insert name="content"></ui:insert>
 	    </div>
 	  </div>
 	</body>
-	
-	<script src="js/js-locale-msg.js"></script>
+
+	<script type="text/javascript" src="js/js-locale-msg.js"></script>
 </html>
