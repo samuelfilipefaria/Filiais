@@ -17,24 +17,26 @@
 			styleClass="add-button fa-solid fa-plus animate__animated animate__fadeInRight"
 		/>
 		
-		<h:form id="formDialog">
-			<p:dialog
-				widgetVar="employeeFormDialog" 
-				modal="true" 
-				width="1000px" 
-				height="400px" 
-				closeOnEscape="true" 
-				position="right" 
-				responsive="true" 
-				resizable="false" 
-				draggable="false"
-				styleClass="animate__animated animate__bounceIn form-dialog"
-			>
-				<h1 class="dialog-title">Cadastro/edição de funcionário(a)</h1>
+		<p:dialog
+			widgetVar="employeeFormDialog" 
+			modal="true" 
+			width="1000px" 
+			height="400px" 
+			closeOnEscape="true" 
+			position="right" 
+			responsive="true" 
+			resizable="false" 
+			draggable="false"
+			styleClass="animate__animated animate__bounceIn form-dialog"
+		>
+			<h1 class="dialog-title">Cadastro/edição de funcionário(a)</h1>
+				
+			<h:form id="formDialog">
 				<p:inputText placeholder="Nome" required="true"/> <br/><br/>
 				<p:inputNumber placeholder="Idade" required="true" styleClass="age-input"/> <br/><br/>
 				<p:inputNumber placeholder="CPF" required="true" styleClass="cpf-input"/> <br/><br/>
 				<p:inputNumber placeholder="Salário" required="true" styleClass="salary-input"/> <br/><br/>
+				
 				<p:inputText placeholder="Rua" required="true"/> <br/><br/>
 				<p:inputNumber placeholder="Número" required="true" styleClass="address-number-input"/> <br/><br/>
 				<p:inputText placeholder="Bairro" required="true"/> <br/><br/>
@@ -58,8 +60,9 @@
 				<br/><br/>
 			
 				<p:commandButton value="Enviar"/>
-			</p:dialog>
-		</h:form>
+			</h:form>
+		</p:dialog>
+		
 	</ui:define>
 </ui:composition>
 </html>

@@ -63,3 +63,14 @@
   100px 100px 80px rgba(0, 0, 0, 0.07)
 ;
 }
+
+.search-field {
+	height: 30px;
+	vertical-align: middle;
+}
+
+.search-button {
+	height: 40px;
+	vertical-align: middle;
+	padding-top: 10px;
+}
