@@ -36,38 +36,30 @@
 			        <p:autoUpdate />
 			    </p:messages>
 
-					<p:inputText id="name" value="#{filialBean.filial.name}" placeholder="Nome" required="true" requiredMessage="Nome inválido!"/>
-					<p:message for="name" /> <br/><br/>
-					<p:inputMask id="cnpj" value="#{filialBean.filial.cnpj}" placeholder="CNPJ" mask="99.999.999/9999-99" required="true" requiredMessage="CNPJ inválido!"/>
-					<p:message for="cnpj"/> <br/><br/>
-
-					<p:inputText id="street" value="#{filialBean.address.street}" placeholder="Rua" required="true" requiredMessage="Rua inválida!"/>
-					<p:message for="street"/> <br/><br/>
-					<p:inputNumber id="number" value="#{filialBean.address.number}" placeholder="Número" padControl="false" required="true" requiredMessage="Número inválido!"/>
-					<p:message for="street"/> <br/><br/>
-					<p:inputText id="neighborhood" value="#{filialBean.address.neighborhood}" placeholder="Bairro" required="true" requiredMessage="Bairro inválido!"/>
-					<p:message for="neighborhood"/> <br/><br/>
-					<p:inputText id="city" value="#{filialBean.address.city}" placeholder="Cidade" required="true" requiredMessage="Cidade inválida!"/>
-					<p:message for="city"/> <br/><br/>
-					<p:inputMask id="postalCode" value="#{filialBean.address.postalCode}" placeholder="CEP" mask="99999-999" required="true" requiredMessage="CEP inválido!"/>
-					<p:message for="postalCode"/> <br/><br/>
+					<p:inputText id="name" value="#{filialBean.filial.name}" placeholder="Nome" required="true" requiredMessage="Nome inválido!"/> <br/><br/>
+					<p:inputMask id="cnpj" value="#{filialBean.filial.cnpj}" placeholder="CNPJ" mask="99.999.999/9999-99" required="true" requiredMessage="CNPJ inválido!"/> <br/><br/>
+					<p:inputText id="street" value="#{filialBean.address.street}" placeholder="Rua" required="true" requiredMessage="Rua inválida!"/> <br/><br/>
+					<p:inputNumber id="number" value="#{filialBean.address.number}" placeholder="Número" padControl="false" required="true" requiredMessage="Número inválido!"/> <br/><br/>
+					<p:inputText id="neighborhood" value="#{filialBean.address.neighborhood}" placeholder="Bairro" required="true" requiredMessage="Bairro inválido!"/> <br/><br/>
+					<p:inputText id="city" value="#{filialBean.address.city}" placeholder="Cidade" required="true" requiredMessage="Cidade inválida!"/> <br/><br/>
+					<p:inputMask id="postalCode" value="#{filialBean.address.postalCode}" placeholder="CEP" mask="99999-999" required="true" requiredMessage="CEP inválido!"/> <br/><br/>
 
 					<p:commandButton action="#{filialBean.save()}" value="Enviar" process="@form" update="@form, formListFilials"/>
 				</h:form>
 			</p:dialog>
-			
+
 			<h:form id="formListFilials">
 				<p:inputText placeholder="Termo de busca" value="#{filialBean.searchTerm}" styleClass="search-field"/>
 				<p:commandButton action="#{filialBean.searchFilial()}" value="" styleClass="fa-solid fa-magnifying-glass search-button" process="@form" update="@form, :formDialog"/>
 				<br/><br/><br/>
-			
+
 				<p:dataTable value="#{filialBean.filials}" var="filial" rows="5"
 							paginator="true" rowsPerPageTemplate="3,5,10">
 					<p:column headerText="Nome">
 						<h:outputText value="#{filial.name}" />
 					</p:column>
 					<p:column headerText="CNPJ">
-						<h:outputText value="#{filial.cnpj}"/>	
+						<h:outputText value="#{filial.cnpj}"/>
 					</p:column>
 					<p:column headerText="Rua">
 						<h:outputText value="#{filial.address.street}"/>
@@ -88,15 +80,15 @@
 						<h:outputText value="#{filialBean.employersQuantity(filial)}"/>
 					</p:column>
 					<p:column headerText="Ações" style="text-align: center; padding: 10px;">
-						<p:commandButton action="#{filialBean.loadFilialData(filial)}" value="Editar" 
+						<p:commandButton action="#{filialBean.loadFilialData(filial)}" value="Editar"
 										process="@form" update="@form, :formDialog" oncomplete="PF('filialFormDialog').show()"/>
-										
-						<br/><br/>		 			
-											
-						<p:commandButton action="#{filialBean.deleteFilial(filial)}" value="Excluir" 
+
+						<br/><br/>
+
+						<p:commandButton action="#{filialBean.deleteFilial(filial)}" value="Excluir"
 										process="@form" update="@form, :formDialog"/>
-					</p:column>	
-				</p:dataTable>	
+					</p:column>
+				</p:dataTable>
 			</h:form>
 	</ui:define>
 </ui:composition>
